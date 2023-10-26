@@ -14,7 +14,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
         return User::all();
     }
 
@@ -46,8 +45,6 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
-
         return User::findOrFail($id);
     }
 
@@ -64,7 +61,15 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $validated = $request->validated();
+    
+        $user->name = $validated['name'];
+        
+        $user->save();
+
+        return $user;
     }
 
     /**
