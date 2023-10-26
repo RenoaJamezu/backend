@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -30,7 +31,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        //
+        // Retrieve the validated input data...
         $validated = $request-> validated();
 
         $validated['password'] = Hash::make($validated['password']);
@@ -84,4 +85,19 @@ class UserController extends Controller
 
         return $user;
     }
+
+    public function email(UserRequest $request, string $id)
+    {
+     $user = User::findOrFail($id);
+
+     $validated = $request->validated();
+
+     $user->email = $validated['email'];
+
+     $user->save();
+
+     return $user;
+    }   
+
+    
 }

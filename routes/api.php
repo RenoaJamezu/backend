@@ -2,9 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\LetterController;
 
-/*
+/* 
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
@@ -20,11 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/carousel', [CarouselItemsController::class, 'index']);
-Route::get('/carousel/{id}', [CarouselItemsController::class, 'show']);
-Route::post('/carousel', [CarouselItemsController::class, 'store']);
-Route::put('/carousel/{id}', [CarouselItemsController::class, 'update']);
-Route::delete('/carousel/{id}', [CarouselItemsController::class, 'destroy']); 
+Route::get('/carousel',[CarouselItemController::class, 'index']);
+Route::get('/carousel/{id}',[CarouselItemController::class, 'show']);
+Route::post('/carousel',[CarouselItemController::class, 'store']);
+Route::put('/carousel/{id}',[CarouselItemController::class, 'update']);
+Route::delete('/carousel/{id}',[CarouselItemController::class, 'destroy']);
 
 
 Route::get('/user', [UserController::class, 'index']);
@@ -32,3 +33,9 @@ Route::get('/user/{id}', [UserController::class, 'show']);
 Route::post('/user/', [UserController::class, 'store'])->name('user.store');
 Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
+Route::get('/letter',[LetterController::class, 'index']);
+Route::get('/letter/{id}',[LetterController::class, 'show']);
+Route::post('/letter',[LetterController::class, 'store']);
+Route::put('/letter/{id}',[LetterController::class, 'update']);
+Route::delete('/letter/{id}',[LetterController::class, 'destroy']);
