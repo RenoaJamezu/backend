@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\LetterController;
+use App\Http\Controllers\Api\PromptController;
 
 /* 
 |--------------------------------------------------------------------------
@@ -39,3 +40,10 @@ Route::get('/letter/{id}',[LetterController::class, 'show']);
 Route::post('/letter',[LetterController::class, 'store']);
 Route::put('/letter/{id}',[LetterController::class, 'update']);
 Route::delete('/letter/{id}',[LetterController::class, 'destroy']);
+
+
+Route::get('/prompt',[PromptController::class, 'index']);
+Route::get('/prompt/{id}',[PromptController::class, 'show']);
+Route::put('/prompt/{id}',[PromptController::class, 'update']);
+Route::delete('/prompt/{id}',[PromptController::class, 'delete']);
+Route::post('/prompt',[PromptController::class, 'store']);
